@@ -3,8 +3,11 @@
 const fp = module.exports = {};
 
 fp.map = (list, callback) => {
-  if(typeof list === [])
+  if (Array.isArray(list)){
     return Array.prototype.map.call(list, callback);
+  } else {
+    return null;
+  }
 };
 
 
