@@ -1,6 +1,6 @@
 'use strict';
 
-const fp = module.exports = {};
+let fp = module.exports = {};
 
 fp.map = (list, callback) => {
   if (Array.isArray(list)){
@@ -10,14 +10,33 @@ fp.map = (list, callback) => {
   }
 };
 
+fp.filter = (list, callback) => {
+  if (typeof list === 'object'){
+    return Array.prototype.filter.call(list, callback);
+  throw new Error('error');
+  }
+};
 
+fp.reduce = (list, callback, startNum) => {
+  if (typeof list === 'object'){
+    return Array.prototype.reduce.call(list, callback, startNum);
+  } else {
+    return null;
+  }
+};
 
-//
-//
-// function map(list, callback){
-//   return Array.prototype.map.call(list, callback);
-// }
-//
-// function reduce(list, args){
-//   return Array.prototype.reduce.apply(list, args)
-// }
+fp.concat = (list, ...itemToConcat) => {
+  if (typeof list === 'object'){
+    return Array.prototype.concat.apply(list, ...itemToConcat);
+  } else {
+    return null;
+  }
+};
+
+fp.splice = (list, ...args) => {
+  if (typeof list === 'object'){
+    return Array.prototype.map.call(list, ...args);
+  } else {
+    return null;
+  }
+};
