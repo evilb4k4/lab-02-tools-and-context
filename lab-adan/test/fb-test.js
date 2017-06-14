@@ -16,7 +16,7 @@ describe('filter', () => {
     expect(fp.filter([1,2,3,4], n => n % 2 === 1)).toEqual([1,3]);
   });
   it('should throw an error', () => {
-    expect(() => fp.filter(2, n => n * 2)).toThrow(Error, 'error');
+    expect(() => fp.filter(2, n => n * 2)).toThrow(Error, 'wrong input');
   });
 });
 
@@ -30,8 +30,8 @@ describe('reduce', () => {
 });
 
 describe('concat', () => {
-  it('should return [1,2,3,4,\'a\',\'b\',[2,4],0,1]', () => {
-    expect(fp.concat([1,2,3,4], ['a','b',[2, 4]], [0,1])).toEqual([1,2,3,4,'a','b',[2,4],0,1]);
+  it('should return [1,2,3,4,\'a\',\'b\']', () => {
+    expect(fp.concat([1,2,3,], ['a','b'])).toEqual([1,2,3,'a','b']);
   });
   it('should return null', () => {
     expect(() => fp.concat(2, (a,c) => a + c)).toEqual(null);

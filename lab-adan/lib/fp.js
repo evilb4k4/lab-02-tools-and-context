@@ -13,7 +13,7 @@ fp.map = (list, callback) => {
 fp.filter = (list, callback) => {
   if (typeof list === 'object'){
     return Array.prototype.filter.call(list, callback);
-  throw new Error('error');
+  throw new Error('wrong input');
   }
 };
 
